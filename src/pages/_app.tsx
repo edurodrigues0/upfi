@@ -1,7 +1,9 @@
-import { AppProps } from 'next/app';
-import { ChakraProvider } from '@chakra-ui/react';
+/* eslint-disable */
+
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { AppProps } from 'next/app';
+import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

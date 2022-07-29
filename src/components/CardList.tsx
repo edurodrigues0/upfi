@@ -1,7 +1,10 @@
+/* eslint-disable */
+
 import { SimpleGrid, useDisclosure } from '@chakra-ui/react';
-import { useState } from 'react';
+
 import { Card } from './Card';
 import { ModalViewImage } from './Modal/ViewImage';
+import { useState } from 'react';
 
 interface Card {
   title: string;

@@ -1,4 +1,7 @@
+/* eslint-disable */
+
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import fauna from 'faunadb';
 
 const { query } = fauna;

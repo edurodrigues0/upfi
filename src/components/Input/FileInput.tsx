@@ -1,34 +1,37 @@
+/* eslint-disable */
+
 import {
   Box,
-  FormLabel,
   CircularProgress,
   CircularProgressLabel,
+  Flex,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
   Icon,
   Image,
   Text,
-  FormControl,
-  FormErrorMessage,
-  Flex,
-  useToast,
   Tooltip,
+  useToast,
 } from '@chakra-ui/react';
-import axios, { AxiosRequestConfig, CancelTokenSource } from 'axios';
 import {
-  useState,
-  SetStateAction,
   Dispatch,
   ForwardRefRenderFunction,
+  SetStateAction,
   forwardRef,
   useCallback,
   useEffect,
+  useState,
 } from 'react';
+import { FiAlertCircle, FiPlus } from 'react-icons/fi';
 import {
   FieldError,
   FieldValues,
   UseFormSetError,
   UseFormTrigger,
 } from 'react-hook-form';
-import { FiAlertCircle, FiPlus } from 'react-icons/fi';
+import axios, { AxiosRequestConfig, CancelTokenSource } from 'axios';
+
 import { api } from '../../services/api';
 
 export interface FileInputProps {

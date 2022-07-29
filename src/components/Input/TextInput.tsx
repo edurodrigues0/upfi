@@ -1,14 +1,17 @@
-import { forwardRef, ForwardRefRenderFunction } from 'react';
-import { FieldError } from 'react-hook-form';
+/* eslint-disable */
+
 import {
+  Input as ChakraInput,
+  InputProps as ChakraInputProps,
   FormControl,
   FormErrorMessage,
   Icon,
-  Input as ChakraInput,
-  InputProps as ChakraInputProps,
   Tooltip,
 } from '@chakra-ui/react';
+import { ForwardRefRenderFunction, forwardRef } from 'react';
+
 import { FiAlertCircle } from 'react-icons/fi';
+import { FieldError } from 'react-hook-form';
 
 interface InputProps extends ChakraInputProps {
   name: string;

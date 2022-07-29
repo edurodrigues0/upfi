@@ -1,4 +1,6 @@
-import { Button, Heading, Flex } from '@chakra-ui/react';
+/* eslint-disable */
+
+import { Button, Flex, Heading } from '@chakra-ui/react';
 
 export function Error(): JSX.Element {
   return (

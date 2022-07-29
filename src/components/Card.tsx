@@ -1,11 +1,14 @@
+/* eslint-disable */
+
 import {
   Box,
   Heading,
-  Text,
   Image,
   Skeleton,
   SkeletonText,
+  Text,
 } from '@chakra-ui/react';
+
 import { useState } from 'react';
 
 interface Card {
