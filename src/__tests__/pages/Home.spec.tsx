@@ -1,12 +1,14 @@
-import { screen, render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { ChakraProvider } from '@chakra-ui/react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import AxiosMock from 'axios-mock-adapter';
+/* eslint-disable */
 
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import AxiosMock from 'axios-mock-adapter';
+import { ChakraProvider } from '@chakra-ui/react';
 import Home from '../../pages/index';
-import { theme } from '../../styles/theme';
 import { api } from '../../services/api';
+import { theme } from '../../styles/theme';
+import userEvent from '@testing-library/user-event';
 
 const apiMock = new AxiosMock(api);
 

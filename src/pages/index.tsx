@@ -10,29 +10,29 @@ import { api } from '../services/api';
 import { useInfiniteQuery } from 'react-query';
 import { useMemo } from 'react';
 
-type Image = {
+interface Image {
   title: string;
   description: string;
   url: string;
   ts: number;
   id: string;
-};
+}
 
-type Response = {
-  data: Image[];
+interface FetchImagesPageResponse {
   after: string;
+  data: Image[];
 }
 
 export default function Home(): JSX.Element {
- 
-  async function fetchPages({pageParam = null}): Promise<Response> {
-    const response = await api.get('/api/images', {
+  async function fetchImagesPage({
+    pageParam = null,
+  }): Promise<FetchImagesPageResponse> {
+    const { data } = await api('/api/images', {
       params: {
-        after: pageParam
-      }
+        after: pageParam,
+      },
     });
-    console.log(response.data)
-    return response.data
+    return data;
   }
   
   const {
@@ -44,22 +44,18 @@ export default function Home(): JSX.Element {
     hasNextPage,
   } = useInfiniteQuery(
     'images',
-    fetchPages, {
-      getNextPageParam: lastPage => {
-        return lastPage?.after || null;
-      }
+    fetchImagesPage, {
+      getNextPageParam: lastPage => lastPage?.after ?? null,
     }
   );
 
   const formattedData = useMemo(() => {
-    const formatted = data?.pages.flatMap((imagesData) => {
-      return imagesData.data.flat();
-    })
-
+    const formatted = data?.pages.flatMap(imageData => {
+      return imageData.data.flat();
+    });
     return formatted;
   }, [data]);
 
-  console.log(formattedData)
 
   if(isLoading && !isError) {
     return <Loading />
@@ -76,10 +72,11 @@ export default function Home(): JSX.Element {
       <Box maxW={1120} px={20} mx="auto" my={20}>
         <CardList cards={formattedData} />
         <Button
+          mt='40px'
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}
         >
-          {isFetchingNextPage ? "Carregando..." : "Carregar mais"}
+          {!isFetchingNextPage ? "Carregar mais" : "Carregando..."}
         </Button>
       </Box>
     </>
